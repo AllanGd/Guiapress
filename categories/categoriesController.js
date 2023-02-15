@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const category = require("./Category");
+// const category = require("./Category");
 const slugify = require("slugify");
 const Category = require("./Category");
 
@@ -11,7 +11,7 @@ router.get("/admin/categories/new", (req, res) => {
 router.post("/categories/save", (req, res) => {
   var title = req.body.title;
   if (title != undefined) {
-    category
+    Category
       .create({
         title: title,
         slug: slugify(title),
@@ -34,7 +34,7 @@ router.post("/categories/delete", (req, res) => {
   var id = req.body.id;
   if (id != undefined) {
     if (!isNaN(id)) {
-      category
+      Category
         .destroy({
           where: {
             id: id,
